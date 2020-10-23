@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block mainContent %}
+<h1>Hello world using a template</h1>
+
+{{ name }}
+<br><br>
+{{ lastname }}
+<br><br>
+{{year}}
+<br><br>
+{% endblock %}
+
+{% block mainContent2 %}
+{% for item in myList %}
+    {{forloop.counter}} - {{ item }} <br>
+{% endfor %}
+
+{% load static %}
+<img src="{% static "example.svg" %}" alt="My image" width="200px" />
+
+{% endblock %}

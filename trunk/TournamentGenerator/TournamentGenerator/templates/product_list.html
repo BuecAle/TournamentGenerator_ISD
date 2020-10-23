@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block mainContent %}
+    <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block mainContent2 %}
+    {% for obj in allProducts %}
+        <a href={{obj.get_absolute_url}}> {{ obj.title }}</a> - {{ obj.price }} <br><br>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+</head>
+<body>
+
+    {% include 'nav_bar.html' %}
+    <hr>
+
+    {% block mainContent %}
+        will be replaced
+    {% endblock %}
+
+    <hr>
+
+    {% block mainContent2 %}
+        will be replaced
+    {% endblock %}
+
+</body>
+</html>

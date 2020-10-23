@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block mainContent %}
+    <h1>{{ title }}</h1>
+{% endblock %}
+
+
+{% block mainContent2 %}
+    {{ obj.title }} - {{ obj.price }} <br><br>
+    {{ obj.description }}
+
+{% endblock %}
