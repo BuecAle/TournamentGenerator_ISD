@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block mainContent2 %}
-    {% for obj in allProducts %}
-        <a href={{obj.get_absolute_url}}> {{ obj.title }}</a> - {{ obj.price }} <br><br>
+    {% for obj in allTeams %}
+        <a href={{obj.get_absolute_url}}> {{ obj.TeamName }}</a> - {{ obj.NrOfPlayer }} <br><br>
     {% endfor %}
 
 {% endblock %}

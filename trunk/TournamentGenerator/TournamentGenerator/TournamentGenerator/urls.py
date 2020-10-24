@@ -20,13 +20,13 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from TournamentGroups.views import home_view
-from TournamentGroups.views import HomeViewClass
+#from TournamentGroups.views import HomeViewClass
 
-from TournamentOverview.views import productList, productDetail
+from TournamentOverview.views import teamList, teamDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('welcome/', home_view),
-    path('products/', productList),
-    path('product/', include('TournamentOverview.urls')),
+    path('teams/', teamList),
+    path('team/', include('TournamentOverview.urls')),
 ]

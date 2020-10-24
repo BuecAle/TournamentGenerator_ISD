@@ -4,14 +4,12 @@ from django.urls import reverse
 # Create your models here.
 
 
-class Products(models.Model):
-    title = models.CharField(max_length=120)
-    description = models.TextField(blank=True)
-    price = models.DecimalField(decimal_places=2, max_digits=5)
-    summary = models.TextField(default="This is a default value")
-    features = models.BooleanField(default="True")
+class Teams(models.Model):
+    TeamName = models.CharField(max_length=120)
+    NrOfPlayer = models.DecimalField(decimal_places=0, max_digits=2)
+
 
     def get_absolute_url(self):
-        return reverse("product-detail", kwargs={"my_id" : self.id})
+        return reverse("team-detail", kwargs={"my_id" : self.id})
 
 

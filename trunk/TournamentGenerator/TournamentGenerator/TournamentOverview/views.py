@@ -1,26 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 
-from .forms import RawProductForm, ProductCreateForm
-from .models import Products
+from .forms import RawTeamForm, TeamCreateForm
+from .models import Teams
 
 # Create your views here.
 
 
-def productCreateView(httprequest, *args, **kwargs):
-    my_form = ProductCreateForm(httprequest.POST or None)
+def teamCreateView(httprequest, *args, **kwargs):
+    my_form = TeamCreateForm(httprequest.POST or None)
 
     if my_form.is_valid():
         my_form.save()        #Products.objects.create(**my_form.cleaned_data)
-        my_form = ProductCreateForm()
+        my_form = TeamCreateForm()
 
     context = {
         "form" : my_form
     }
 
-    return render(httprequest, "product_create_view.html", context)
+    return render(httprequest, "team_create_view.html", context)
 
 """
-def productCreateView(httprequest, *args, **kwargs):
+def teamCreateView(httprequest, *args, **kwargs):
     my_form = RawProductForm(httprequest.POST or None)
     print(httprequest.POST)
     if my_form.is_valid():
@@ -32,25 +32,25 @@ def productCreateView(httprequest, *args, **kwargs):
         "form" : my_form
     }
 
-    return render(httprequest, "product_list.html", context)
+    return render(httprequest, "team_list.html", context)
 """
 
-def productList(httprequest, *args, **kwargs):
-    allProducts = Products.objects.all()
+def teamList(httprequest, *args, **kwargs):
+    allTeams = Teams.objects.all()
     context ={
-        "allProducts" : allProducts,
-        "title" : "My product list"
+        "allTeams" : allTeams,
+        "title" : "My team list"
     }
 
-    return render(httprequest, "product_list.html", context)
+    return render(httprequest, "team_list.html", context)
 
 
-def productDetail(httprequest, my_id, *args, **kwargs):
+def teamDetail(httprequest, my_id, *args, **kwargs):
     #oneProduct = Products.objects.get(id=my_id)
-    oneProduct =get_object_or_404(Products, id=my_id)
+    oneTeam =get_object_or_404(Teams, id=my_id)
     context ={
-        "obj" : oneProduct,
-        "title" : "Product Details"
+        "obj" : oneTeam,
+        "title" : "Team Details"
     }
 
-    return render(httprequest, "product_detail.html", context)
+    return render(httprequest, "team_detail.html", context)

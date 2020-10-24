@@ -1,20 +1,19 @@
 from django import forms
-from .models import Products
+from .models import Teams
 
 
-class ProductCreateForm(forms.ModelForm):
+class TeamCreateForm(forms.ModelForm):
     class Meta:
-        model = Products
-        fields = ['title', 'description', 'price']
+        model = Teams
+        fields = ['TeamName', 'NrOfPlayer']
 
     def clean_title(self, *args, **kwargs):
-        tmp = self.cleaned_data.get('title')
+        tmp = self.cleaned_data.get('TeamName')
         if len(tmp) < 10:
-            raise forms.ValidationError("This title is to short")
+            raise forms.ValidationError("This Teamname is to short")
         return tmp
 
 
-class RawProductForm(forms.Form):
-    title = forms.CharField()
-    description = forms.CharField()
-    price = forms.DecimalField()
+class RawTeamForm(forms.Form):
+    TeamName = forms.CharField()
+    NrOfPlayer = forms.DecimalField()
