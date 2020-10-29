@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
+<style>
+
+</style>
+
 {% block mainContent %}
     <h1>{{ title }}</h1>
 {% endblock %}
 
 {% block mainContent2 %}
+<section>
     {% for obj in allTeams %}
         <a href={{obj.get_absolute_url}}> {{ obj.TeamName }}</a> - {{ obj.NrOfPlayer }} <br><br>
     {% endfor %}
-
+</section>
+    <a href="/team/create/" class="btn btn-dark">Neues Team erstellen</a>
 {% endblock %}

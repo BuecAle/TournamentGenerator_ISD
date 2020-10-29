@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>.nav-item {
-background-color: blank;
-color: white;
-margin: 20px;
-padding: 20px;
+<style>.title{
+background-color: green;
 }
-    </style>
+</style>
 
     <!-- Required Metatext-->
     <meta charset="utf-8">
@@ -16,12 +13,12 @@ padding: 20px;
     <!-- Bootstraps CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Team Kasallah</title>
+    <title>Tournament Generator</title>
 </head>
 <body>
 
     {% include 'nav_bar.html' %}
-    <hr>
+
 
     {% block mainContent %}
         will be replaced
@@ -32,6 +29,10 @@ padding: 20px;
     {% block mainContent2 %}
         will be replaced
     {% endblock %}
+
+    <hr>
+
+    {% include 'footer.html' %}
 
 </body>
 </html>

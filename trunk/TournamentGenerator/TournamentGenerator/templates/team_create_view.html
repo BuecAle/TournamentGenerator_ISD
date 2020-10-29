@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block mainContent %}
+    <h1>Neues Team erstellen</h1>
+    <br>
     <form action="." method="POST">{% csrf_token %}
         {{form.as_p}}
         <input type="submit" name="Save">
     </form>
+    <a href="/team/">Teamliste</a>
 
 {% endblock %}
