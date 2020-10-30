@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block mainContent %}
-    <h1>{{ title }}</h1>
+    <h1>{{ obj.TeamName }}</h1>
 {% endblock %}
 
 
 {% block mainContent2 %}
-    {{ obj.TeamName }} - {{ obj.NrOfPlayer }} <br><br>
-    <a href="/team/create/" class="btn btn-dark">Teamübersicht</a>
+    <b>Number of Players:</b> {{ obj.NrOfPlayer }} <br>
+    <b>Manager:</b> {{ obj.Manager }} <br>
+    <b>Captain:</b> {{ obj.Captain }}
+{% endblock %}
+
+{% block mainContent3 %}
+    <a href="/team/" class="standardBtn">All Teams</a>
 {% endblock %}

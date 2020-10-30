@@ -14,7 +14,7 @@ def teamCreateView(httprequest, *args, **kwargs):
         my_form = TeamCreateForm()
 
     context = {
-        "form" : my_form
+        "form": my_form
     }
 
     return render(httprequest, "team_create_view.html", context)
@@ -35,6 +35,7 @@ def teamCreateView(httprequest, *args, **kwargs):
     return render(httprequest, "team_list.html", context)
 """
 
+
 def teamList(httprequest, *args, **kwargs):
     allTeams = Teams.objects.all()
     context ={
@@ -54,3 +55,11 @@ def teamDetail(httprequest, my_id, *args, **kwargs):
     }
 
     return render(httprequest, "team_detail.html", context)
+
+"""
+def teamPlayer(httprequest, *args):
+    my_dict = {
+        "myList": ["this", "is", "my", "list", "hello"],
+    }
+    return render(httprequest, "home.html", my_dict)
+"""

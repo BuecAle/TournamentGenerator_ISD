@@ -22,3 +22,4 @@ class HomeViewClass(View):
 
 class AboutView(TemplateView):
     template_name = "about.html"
+

@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>.title{
-background-color: green;
-}
-</style>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
 
     <!-- Required Metatext-->
     <meta charset="utf-8">
@@ -31,7 +29,10 @@ background-color: green;
     {% endblock %}
 
     <hr>
-
+    {% block mainContent3 %}
+        will be replaced
+    {% endblock %}
+    <hr>
     {% include 'footer.html' %}
 
 </body>
