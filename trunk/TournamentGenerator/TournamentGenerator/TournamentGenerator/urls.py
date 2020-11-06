@@ -22,11 +22,12 @@ from django.views.generic import TemplateView
 from TournamentGroups.views import home_view
 #from TournamentGroups.views import HomeViewClass
 
-from TournamentOverview.views import teamList, teamDetail
+from TournamentOverview.views import teamList, teamDetail, teamListTournamentTree
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('welcome/', home_view),
+    path('home/', home_view),
     path('teams/', teamList),
     path('team/', include('TournamentOverview.urls')),
+    path('tournamenttree/', teamListTournamentTree),
 ]

@@ -46,6 +46,18 @@ def teamList(httprequest, *args, **kwargs):
     return render(httprequest, "team_list.html", context)
 
 
+def teamListTournamentTree(httprequest, *args, **kwargs):
+    allTeams = Teams.objects.filter(Captain="Max")
+    context ={
+        "allTeams" : allTeams,
+        "title" : "My teams"
+    }
+
+    return render(httprequest, "tournament_tree.html", context)
+
+
+
+
 def teamDetail(httprequest, my_id, *args, **kwargs):
     #oneProduct = Products.objects.get(id=my_id)
     oneTeam =get_object_or_404(Teams, id=my_id)

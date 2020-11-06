@@ -1,0 +1,25 @@
+{% extends 'base_2_content.html' %}
+
+{% block mainContent %}
+<h1>Tournament Tree</h1><br>
+<div>
+    {% for obj in allTeams %}
+    <table style="height: 71px;" border="2px" width="253">
+        <tbody>
+            <tr>
+                <td style="width: 243px;">{{ obj.TeamName }}</td>
+            </tr>
+            <tr>
+                <td style="width: 243px;">{{ obj.TeamName }}</td>
+            </tr>
+        </tbody>
+    </table>
+<br><br><br>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block mainContent2 %}
+   <a href="/team/" class="StandardBtn">Back to all Teams</a>
+{% endblock %}
