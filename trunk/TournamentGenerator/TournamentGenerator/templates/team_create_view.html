@@ -1,16 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base_2_content.html' %}
 
 {% block mainContent %}
     <h1>Create new Team</h1>
     <br>
     <form action="." method="POST">{% csrf_token %}
         {{form.as_p}}
-        <input type="submit" name="Save">
+        <input type="submit" name="Save" value="Submit">
     </form>
     <br>
-    <a href="/team/" class="StandardBtn">Back to all Teams</a>
-
 {% endblock %}
 
 {% block mainContent2 %}
+   <a href="/team/" class="StandardBtn">Back to all Teams</a>
 {% endblock %}
