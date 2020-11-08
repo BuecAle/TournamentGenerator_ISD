@@ -26,7 +26,7 @@ from TournamentOverview.views import teamList, teamDetail, teamListTournamentTre
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view),
+    path('home/', include('brackets.urls')),
     path('teams/', teamList),
     path('team/', include('TournamentOverview.urls')),
     path('tournamenttree/', teamListTournamentTree),

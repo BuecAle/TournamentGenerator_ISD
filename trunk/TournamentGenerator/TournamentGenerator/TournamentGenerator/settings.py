@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # own apps
     'TournamentOverview',
     'TournamentGroups',
+    'brackets',
 ]
 
 MIDDLEWARE = [

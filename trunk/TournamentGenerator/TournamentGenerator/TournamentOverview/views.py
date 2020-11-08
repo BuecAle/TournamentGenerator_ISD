@@ -47,7 +47,7 @@ def teamList(httprequest, *args, **kwargs):
 
 
 def teamListTournamentTree(httprequest, *args, **kwargs):
-    allTeams = Teams.objects.filter(Captain="Max")
+    allTeams = Teams.objects.filter(TeamName="Team1")
     context ={
         "allTeams" : allTeams,
         "title" : "My teams"
