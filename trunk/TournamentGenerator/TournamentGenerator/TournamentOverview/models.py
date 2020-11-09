@@ -14,3 +14,4 @@ class Teams(models.Model):
         return reverse("team-detail", kwargs={"my_id" : self.id})
 
 
+

@@ -15,11 +15,10 @@
         <th>Quarter</th>
     </tr>
   </thead>
-    {% for obj in allTeams %}
   <tbody>
     <tr>
-      <td style="vertical-align: middle"><a href="#" class="btn btn-primary">{{ obj.TeamName }}</a></td>
-        <td rowspan="2" style="vertical-align: middle"><a href="#" class="btn btn-success">Semi C1</a></td>
+      <td style="vertical-align: middle"><a href="#" class="btn btn-primary">{{ all_Teams.TeamName }}</a></td>
+        <td rowspan="2" style="vertical-align: middle"><a href="#" class="btn btn-success">{{ TeamB.TeamName }}</a></td>
         <td rowspan="4" style="vertical-align: middle"><a href="#" class="btn btn-info">Finals C1</a></td>
         <td rowspan="4" style="vertical-align: middle"><a href="#" class="btn btn-danger">Champion</a></td>
         <td rowspan="4" style="vertical-align: middle"><a href="#" class="btn btn-info">Finals C5</a></td>
@@ -41,7 +40,6 @@
         <td style="vertical-align: middle"><a href="#" class="btn btn-primary">Contestant 8</a></td>
     </tr>
   </tbody>
-    {% endfor %}
 </table>
 
 </div>

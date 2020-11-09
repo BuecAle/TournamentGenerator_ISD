@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 
-from TournamentOverview.views import teamList, teamDetail, teamCreateView, teamListTournamentTree
+from TournamentOverview.views import teamList, teamDetail, teamCreateView, teamOne
 
 urlpatterns = [
     path('', teamList),
-    path('<int:my_team>', teamListTournamentTree),
+    path('', teamOne),
     path('<int:my_id>', teamDetail, name="team-detail"),
     path('create/', teamCreateView)
 ]

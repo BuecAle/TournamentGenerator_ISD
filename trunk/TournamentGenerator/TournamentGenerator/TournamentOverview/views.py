@@ -45,7 +45,7 @@ def teamList(httprequest, *args, **kwargs):
 
     return render(httprequest, "team_list.html", context)
 
-
+"""
 def teamListTournamentTree(httprequest, *args, **kwargs):
     allTeams = Teams.objects.filter(TeamName="Team1")
     context ={
@@ -54,7 +54,7 @@ def teamListTournamentTree(httprequest, *args, **kwargs):
     }
 
     return render(httprequest, "tournament_tree.html", context)
-
+"""
 
 
 
@@ -67,6 +67,19 @@ def teamDetail(httprequest, my_id, *args, **kwargs):
     }
 
     return render(httprequest, "team_detail.html", context)
+
+
+def teamOne(request):
+    #teamone = Teams.objects.get(id=id_one)
+    teamone = Teams.objects.all()
+    TeamA = teamone[1]
+    TeamB = teamone[23]
+    context = {
+        "all_Teams": TeamA,
+        "TeamB" : TeamB,
+    }
+
+    return render(request, "tournament_tree.html", context)
 
 """
 def teamPlayer(httprequest, *args):
