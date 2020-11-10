@@ -2,13 +2,6 @@
 
 {% block mainContent %}
 <h1>Tournament Tree</h1><br>
-<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
 </div>
 <div>
 <table class="table table-striped table-hover ">
@@ -55,6 +48,15 @@
 {% endblock %}
 
 {% block mainContent2 %}
+<div class="dropdown">
+  <button class="dropbtn">Number of Teams</button>
+  <div class="dropdown-content">
+    <a href="/8/">8 Teams</a>
+    <a href="/16/">16 Teams</a>
+    <a href="/32/">32 Teams</a>
+    <a href="/64/">64 Teams</a>
+  </div>
+</div>
    <a href="/team/" class="StandardBtn">Back to all Teams</a>
 {% endblock %}
 
