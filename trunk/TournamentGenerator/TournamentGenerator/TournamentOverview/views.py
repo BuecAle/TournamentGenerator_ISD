@@ -70,16 +70,30 @@ def teamDetail(httprequest, my_id, *args, **kwargs):
 
 
 def teamOne(request):
-    #teamone = Teams.objects.get(id=id_one)
-    teamone = Teams.objects.all()
-    TeamA = teamone[1]
-    TeamB = teamone[23]
+    all_teams = Teams.objects.all()
+   # for i in all_teams:
+    #        = all_teams[i]
+    TeamA = all_teams[0]
+    TeamB = all_teams[1]
+    TeamC = all_teams[2]
+    TeamD = all_teams[3]
+    TeamE = all_teams[4]
+    TeamF = all_teams[5]
+    TeamG = all_teams[6]
+    TeamH = all_teams[7]
     context = {
-        "all_Teams": TeamA,
-        "TeamB" : TeamB,
+        "TeamA": TeamA,
+        "TeamB": TeamB,
+        "TeamC": TeamC,
+        "TeamD": TeamD,
+        "TeamE": TeamE,
+        "TeamF": TeamF,
+        "TeamG": TeamG,
+        "TeamH": TeamH,
     }
 
     return render(request, "tournament_tree.html", context)
+
 
 """
 def teamPlayer(httprequest, *args):
