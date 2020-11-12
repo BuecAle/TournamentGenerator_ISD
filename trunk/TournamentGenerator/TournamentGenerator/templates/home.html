@@ -2,12 +2,20 @@
 {% load static %}
 
 {% block mainContent %}
-<p class="test">
-Tournament Generator<br>
-One step closer to your individual torunament
 
-</p>
-
-<br><br>
+<div class="header">
+    <h1>Tournament Generator</h1>
+    <h3>One step closer to your individual tournament</h3><br>
+    <input type="text" id="tname" name="tname" value="Enter your Tournament Name here" onclick="value=''" onsubmit="test"><br><br>
+    <div class="dropdown">
+    <button class="dropbtn">Tournamentsize</button>
+        <div class="dropdown-content">
+            <a href="#">8 Teams</a>
+            <a href="#">16 Teams</a>
+            <a href="#">32 Teams</a>
+        </div>
+    </div><br><br>
+    <input type="submit" name="Save" value="Submit">
+    </div>
 {% endblock %}
 
