@@ -1,5 +1,5 @@
 from django import forms
-from .models import Teams
+from .models import Teams, Tournament
 
 
 class TeamCreateForm(forms.ModelForm):
@@ -10,7 +10,7 @@ class TeamCreateForm(forms.ModelForm):
     def clean_title(self, *args, **kwargs):
         tmp = self.cleaned_data.get('TeamName')
         if len(tmp) < 10:
-            raise forms.ValidationError("This Teamname is to short")
+            raise forms.ValidationError("This Teamname is too short")
         return tmp
 
 
@@ -20,3 +20,19 @@ class RawTeamForm(forms.Form):
     Manager = forms.CharField()
     Captain = forms.CharField();
 
+
+class TournamentCreateForm(forms.ModelForm):
+    class Meta:
+        model = Tournament
+        fields = ['TournamentName', 'TournamentSize']
+
+    def clean_title(self, *args, **kwargs):
+        tmp = self.cleaned_data.get('TournamentName')
+        if len(tmp) < 5:
+            raise forms.ValidationError("This Tournamentname is too short")
+        return tmp
+
+
+class RawTeamForm(forms.Form):
+    TournamentName = forms.CharField()
+    TournamentSize = forms.CharField();
