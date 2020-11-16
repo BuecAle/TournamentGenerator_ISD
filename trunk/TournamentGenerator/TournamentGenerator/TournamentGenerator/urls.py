@@ -19,15 +19,14 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
-from TournamentGroups.views import home_view
-#from TournamentGroups.views import HomeViewClass
 
-from TournamentOverview.views import teamList, teamDetail, teamOne
+from TournamentOverview.views import teamList, teamDetail, teamOne, tournamentCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('brackets.urls')),
+    path('home/', tournamentCreateView),
     path('teams/', teamList),
+    path('', tournamentCreateView),
     path('team/', include('TournamentOverview.urls')),
     path('tournamenttree/', teamOne),
 ]

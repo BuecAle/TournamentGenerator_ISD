@@ -18,6 +18,12 @@
   </thead>
   <tbody>
     <tr>
+        {% for o in all_teams %}
+    <tr>
+        {{ o.TeamName }}
+    </tr>
+    {% endfor %}
+
       <td style="vertical-align: middle"><a href="#" class="btn btn-primary">{{ TeamA.TeamName }}</a></td>
         <td rowspan="2" style="vertical-align: middle"><a href="#" class="btn btn-success">Semi C6</a></td>
         <td rowspan="4" style="vertical-align: middle"><a href="#" class="btn btn-info">Finals C1</a></td>

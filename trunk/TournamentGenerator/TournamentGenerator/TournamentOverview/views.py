@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
-from .forms import RawTeamForm, TeamCreateForm
-from .models import Teams
+from .forms import RawTeamForm, TeamCreateForm, TournamentCreateForm
+from .models import Teams, Tournament
 
 # Create your views here.
 
@@ -58,3 +58,14 @@ def teamOne(request):
     return render(request, "tournament_tree.html", context)
 
 
+def tournamentCreateView(httprequest, *args, **kwargs):
+    my_form = TournamentCreateForm(httprequest.POST or None)
+    if my_form.is_valid():
+        my_form.save()
+        my_form = TournamentCreateForm()
+
+    context = {
+        "form": my_form
+    }
+
+    return render(httprequest, "home.html", context)
