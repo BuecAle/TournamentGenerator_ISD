@@ -24,9 +24,10 @@ from TournamentOverview.views import teamList, teamDetail, teamOne, tournamentCr
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', tournamentCreateView),
-    path('teams/', teamList),
-    path('', tournamentCreateView),
-    path('team/', include('TournamentOverview.urls')),
-    path('tournamenttree/', teamOne),
+    path('', include('TournamentOverview.urls', namespace="TournamentOverview"))
+    # path('home/', tournamentCreateView),
+    # path('teams/', teamList),
+    # path('', tournamentCreateView),
+    # path('team/', include('TournamentOverview.urls')),
+    # path('tournamenttree/', teamOne),
 ]
