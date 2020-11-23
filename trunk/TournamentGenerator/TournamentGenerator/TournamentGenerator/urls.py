@@ -17,14 +17,11 @@ from django.urls import include
 
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView
 
-
-from TournamentOverview.views import teamList, teamDetail, teamOne, tournamentCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('TournamentOverview.urls', namespace="TournamentOverview"))
+    path('', include('TournamentOverview.urls'))
     # path('home/', tournamentCreateView),
     # path('teams/', teamList),
     # path('', tournamentCreateView),

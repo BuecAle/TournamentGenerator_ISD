@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import  views
 
 
-from TournamentOverview.views import teamList, teamDetail, teamCreateView, teamOne, tournamentCreateView
 app_name = "TournamentOverview"
 urlpatterns = [
-    path('', tournamentCreateView),
+    path('', views.TournamentsView.as_view(), name="tournaments"),
     # path('', teamOne),
-    path('<int:my_id>/', teamDetail, name="team-detail"),
-    path('create/<int:pk>/', teamCreateView, name="create_team")
+    # path('<int:my_id>/', teamDetail, name="team-detail")
+    path('create_teams/<int:pk>/', views.TeamsCreateView.as_view(), name="create_teams")
 ]
