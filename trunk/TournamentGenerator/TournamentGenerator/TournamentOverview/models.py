@@ -13,7 +13,7 @@ class Tournament(models.Model):
     TournamentSize = models.CharField(max_length=120, choices=TOURNAMENT_CHOICES, default='Tournamentsize')
 
     def get_absolute_url(self):
-        return reverse("team-detail", kwargs={"my_id" : self.id})
+        return reverse("teams_list", kwargs={"pk": self.id})
 
     def __str__(self):
         return f"{self.TournamentName} with {self.TournamentSize} teams"
@@ -26,8 +26,8 @@ class Teams(models.Model):
     Captain = models.CharField(max_length=120, default="")
     tournament = models.ForeignKey(Tournament, blank=True, null=True, on_delete=models.CASCADE)
 
-    def get_absolute_url(self):
-        return reverse("team-detail", kwargs={"my_id" : self.id})
+    # def get_absolute_url(self):
+    #     return reverse("team-detail", kwargs={"my_id" : self.id})
 
     def __str__(self):
         return f"{self.TeamName}"
