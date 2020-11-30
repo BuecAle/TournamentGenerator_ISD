@@ -11,9 +11,9 @@
     {% for obj in Teams %}
     <div class="col mb-4">
         <div class="card h-10">
-          <img src="{% static "example.svg" %}" class="card-img-top" alt="My image" height="100px" >
+          <img src="{% static 'example.svg' %}" class="card-img-top" alt="My image" height="100px" >
           <div class="card-body">
-            <h5 class="card-title"><a href={{obj.get_absolute_url}}> {{ obj.TeamName }}</a></h5>
+            <h5 class="card-title"><a href=#> {{ obj.TeamName }}</a></h5>
             <p class="card-text"> Number of Players: {{ obj.NrOfPlayer }}<br>
             Manager: {{ obj.Manager }}<br>
             Captain: {{ obj.Captain }}</p>
@@ -25,7 +25,7 @@
 {% endblock %}
 
 {% block mainContent3 %}
-    <a href="/tournamenttree/" class="StandardBtn">Tournament Tree</a>
-    <a href="/team/create/" class="StandardBtn">Create new Team</a>
+    <a href=# class="StandardBtn">Tournament Tree</a>
+    <a href="{% url 'team_view' pk %}" class="StandardBtn">Create new Team</a>
 <br><br><br><br><br><br><br><br>
 {% endblock %}

@@ -117,7 +117,10 @@ class TournamentTeamsView(View):
    def get(self, request, *args, **kwargs):
        tournament = Tournament.objects.get(pk=kwargs["pk"])
        teams = Teams.objects.filter(tournament=tournament)
-       return render(request, "team_list.html", context={"Teams": teams})
+       return render(request, "team_list.html", context={
+           "pk": kwargs["pk"],
+           "Teams": teams
+       })
 
 
 class AllTournamentsView(View):

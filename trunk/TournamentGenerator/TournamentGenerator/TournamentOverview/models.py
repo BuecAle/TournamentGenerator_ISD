@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.shortcuts import redirect
 
 # Create your models here.
 
@@ -27,7 +28,7 @@ class Teams(models.Model):
     tournament = models.ForeignKey(Tournament, blank=True, null=True, on_delete=models.CASCADE)
 
     # def get_absolute_url(self):
-    #     return reverse("team-detail", kwargs={"my_id" : self.id})
+    #     return reverse("team-view", kwargs={"pk" : self.tournament.id})
 
     def __str__(self):
         return f"{self.TeamName}"
