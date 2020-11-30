@@ -6,7 +6,7 @@
 <div class="header">
     <h1>Tournament Generator</h1>
     <h3>One step closer to your individual tournament</h3><br>
-    <form class="drop" action="." method="POST">{% csrf_token %}
+    <form class="drop" action="{% url 'create_tournament' %}" method="post">{% csrf_token %}
         {{form.TournamentName}}<br><br>
         {{form.TournamentSize}}<br><br>
     <!--<input type="text" id="tname" name="tname" value="Enter your Tournament Name here" onclick="value=''" onsubmit="test"><br><br>

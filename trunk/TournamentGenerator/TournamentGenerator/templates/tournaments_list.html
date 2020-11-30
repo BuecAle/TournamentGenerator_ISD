@@ -1,0 +1,23 @@
+{% extends 'base_3_content.html' %}
+{% load static %}
+
+
+{% block mainContent %}
+    <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block mainContent2 %}
+<div class="row row-cols-1 row-cols-md-4">
+    {% for obj in Tournaments %}
+    <div class="col mb-4">
+        <div class="card h-10">
+          <img src="{% static "example.svg" %}" class="card-img-top" alt="My image" height="100px" >
+          <div class="card-body">
+            <h5 class="card-title"><a href={{obj.get_absolute_url}}> {{ obj.TournamentName }}</a></h5>
+            <p class="card-text"> Number of Teams: {{ obj.TournamentSize }}<br>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
