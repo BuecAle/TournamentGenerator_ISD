@@ -13,3 +13,14 @@ class Team(models.Model):
 
     def __str__(self):
         return self.TeamName
+
+
+class Game(models.Model):
+    team_a = models.ForeignKey(Team, blank=True, null=True, on_delete=models.CASCADE)
+    team_b = models.ForeignKey(Team, blank=True, null=True, on_delete=models.CASCADE)
+    team_a_points = models.IntegerField(default=0)
+    team_b_points = models.IntegerField(default=0)
+    played = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.team_a.name} vs {self.team_b.name}"

@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from Team.models import Game
+
 
 # Create your models here.
 class Tournament(models.Model):
@@ -17,3 +19,11 @@ class Tournament(models.Model):
 
     def __str__(self):
         return self.TournamentName
+
+
+class Stage(models.Model):
+    CHOOSE_STAGE = (
+        (1, "Final"),
+
+    )
+    game = models.ForeignKey(Game, blank=True, null=True, on_delete=models.SET_NULL)
