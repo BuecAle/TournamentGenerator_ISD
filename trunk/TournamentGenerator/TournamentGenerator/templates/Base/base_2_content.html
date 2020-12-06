@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Tournament Generator</title>
+    <link rel="shortcut icon" href="{% static 'images/Trophy.png' %}">
 </head>
 <body>
 
-    {% include 'nav_bar.html' %}
+    {% include 'Navigation.html' %}
 
 
     {% block mainContent %}
@@ -29,11 +30,8 @@
     {% endblock %}
 
     <hr>
-    {% block mainContent3 %}
-        will be replaced
-    {% endblock %}
-    <hr>
-    {% include 'footer.html' %}
+
+    {% include 'Footer.html' %}
 
 </body>
 </html>

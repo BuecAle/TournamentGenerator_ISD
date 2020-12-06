@@ -25,6 +25,7 @@ class TeamDetailsView(View):
             "opponents": opponents
         })
 
+
 class TeamCreateView(View):
     def get(self, request):
         form = TeamCreateForm
@@ -43,7 +44,17 @@ class TeamCreateForTournamentView(View):
     def get(self, request, *args, **kwargs):
         tournament = Tournament.objects.get(pk=kwargs["pk"])
         form = TeamCreateForm(initial={'Tournament': tournament})
-        return render(request, "Tournament/TournamentCreateTeam.html", context={"form": form, 'tournament': tournament})
+        remainingTeams = int(tournament.TournamentSize[0]) - Team.objects.filter(Tournament=tournament).count()
+        if remainingTeams == 0:
+            tournament_complete = True
+        else:
+            tournament_complete = False
+        return render(request, "Tournament/TournamentCreateTeam.html", context={
+            "form": form,
+            "tournament": tournament,
+            "remainingTeams": remainingTeams,
+            "tournament_complete": tournament_complete
+        })
 
     def post(self, request, *args, **kwargs):
         form = TeamCreateForm(request.POST)

@@ -20,11 +20,16 @@ class TournamentDetailsView(View):
        tournament = Tournament.objects.get(pk=kwargs["pk"])
        team = Team.objects.filter(Tournament=kwargs["pk"])
        remainingTeams = int(tournament.TournamentSize[0]) - Team.objects.filter(Tournament=tournament).count()
+       if remainingTeams == 0:
+           tournament_complete = True
+       else:
+           tournament_complete = False
        return render(request, "Tournament/TournamentDetails.html", context={
            "pk": kwargs["pk"],
            "tournament": tournament,
            "team": team,
            "remainingTeams": remainingTeams,
+           "tournament_complete": tournament_complete,
        })
 
 
