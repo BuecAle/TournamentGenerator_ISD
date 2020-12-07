@@ -1,0 +1,22 @@
+{% extends 'Base/base_3_content.html' %}
+{% load static %}
+
+
+{% block mainContent %}
+    <h1>{{ team.TeamName }}</h1>
+    Tournament: {{ team.Tournament }}
+{% endblock %}
+
+{% block mainContent2 %}
+    Number of Player: {{ team.TeamName }}<br>
+    Manager: {{ team.TeamName }}<br>
+    Captain: {{ team.TeamName }}
+{% endblock %}
+
+{% block mainContent3 %}
+<h3>Games</h3>
+    {% for obj in opponents %}
+        {{ team.TeamName }} vs. {{ obj.TeamName }}<br>
+    {% endfor %}
+
+{% endblock %}

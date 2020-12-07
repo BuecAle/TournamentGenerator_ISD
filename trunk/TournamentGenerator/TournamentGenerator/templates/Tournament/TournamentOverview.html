@@ -1,0 +1,23 @@
+{% extends 'Base/base_3_content.html' %}
+{% load static %}
+
+
+{% block mainContent %}
+    <h1>All Tournaments</h1>
+{% endblock %}
+
+{% block mainContent2 %}
+{% if tournament_list %}
+    <ul>
+    {% for tournament in tournament_list %}
+    <li><a href="{% url 'Tournament:Details' tournament.id %}">{{ tournament.TournamentName }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Tournaments created yet.</p>
+{% endif %}
+{% endblock %}
+
+{% block mainContent3 %}
+    <a href="{% url 'Tournament:Create' %}" class="StandardBtn">Create a new Tournament</a>
+{% endblock %}

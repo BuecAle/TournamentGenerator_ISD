@@ -1,0 +1,30 @@
+{% extends 'Base/base_3_content.html' %}
+{% load static %}
+
+
+{% block mainContent %}
+    <h1>All Teams</h1>
+{% endblock %}
+
+{% block mainContent2 %}
+{% if team_list %}
+    <ul>
+    {% for team in team_list %}
+    <div class="col mb-4">
+        <div class="card h-10">
+          <img src="{% static 'example.svg' %}" class="card-img-top" alt="My image" height="100px" >
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'Team:Details' team.id %}"> {{ team.TeamName }}</a></h5>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Teams created yet.</p>
+{% endif %}
+{% endblock %}
+
+{% block mainContent3 %}
+    <a href="{% url 'Team:Create' %}" class="StandardBtn">Create a new Team</a>
+{% endblock %}

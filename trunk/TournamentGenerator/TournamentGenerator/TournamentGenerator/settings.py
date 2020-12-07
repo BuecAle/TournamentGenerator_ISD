@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # own apps
-    'TournamentOverview',
-    'TournamentGroups',
-    'brackets',
+    'Team.apps.TeamConfig',
+    'Tournament.apps.TournamentConfig',
 ]
 
 MIDDLEWARE = [
