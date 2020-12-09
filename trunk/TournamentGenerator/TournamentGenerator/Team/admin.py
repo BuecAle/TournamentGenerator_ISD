@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Team
+from .models import Team, Game
 
 
 # Register your models here.
@@ -18,3 +18,4 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Team, TeamAdmin)
+admin.site.register(Game)

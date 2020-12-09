@@ -1,0 +1,18 @@
+{% extends 'Base/base_3_content.html' %}
+{% load static %}
+
+{% block stage_content %}
+{% for game in games %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{game.team_a}}:{{game.team_a_points}} VS {{game.team_b}}:{{game.team_b_points}} </h5>
+        <a href="#" class="btn btn-primary">EDIT</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+

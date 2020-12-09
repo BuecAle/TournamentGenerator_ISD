@@ -1,5 +1,5 @@
 from django import forms
-from .models import Team
+from .models import Team, Game
 
 
 # Create your forms here
@@ -14,6 +14,14 @@ class TeamCreateForm(forms.ModelForm):
         if len(tmp) < 10:
             raise forms.ValidationError('This Teamname is too short')
         return tmp
+
+
+class GameEditForm(forms.ModelForm):
+
+    class Meta:
+        model = Game
+        fields = ["team_a_points", "team_b_points", "played"]
+
 
 
 class RawTeamForm(forms.Form):

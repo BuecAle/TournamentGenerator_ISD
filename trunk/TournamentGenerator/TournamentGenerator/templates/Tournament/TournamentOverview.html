@@ -10,7 +10,7 @@
 {% if tournament_list %}
     <ul>
     {% for tournament in tournament_list %}
-    <li><a href="{% url 'Tournament:Details' tournament.id %}">{{ tournament.TournamentName }}</a></li>
+    <li><a href="{% url 'Tournament:Details' pk=tournament.id %}">{{ tournament.TournamentName }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

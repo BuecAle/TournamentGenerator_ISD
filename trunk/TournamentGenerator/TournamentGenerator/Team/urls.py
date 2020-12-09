@@ -7,4 +7,5 @@ urlpatterns = [
  path('', (views.TeamAllView.as_view()), name='Overview'),
  path('<int:pk>/', (views.TeamDetailsView.as_view()), name='Details'),
  path('Create/', (views.TeamCreateView.as_view()), name='Create'),
+ path("GenerateStage/<int:pk>/", views.GenerateStageGames.as_view(), name="Stage")
 ]

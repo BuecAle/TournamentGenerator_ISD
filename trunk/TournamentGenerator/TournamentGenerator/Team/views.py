@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
+from django.db.models import Count
 from django.urls import reverse
 from django.views import View, generic
 
 from Tournament.models import Tournament
 from .models import Team, Game
-from .forms import TeamCreateForm
+from .forms import TeamCreateForm, GameEditForm
 import random
 
 
@@ -76,22 +77,23 @@ class TeamCreateForTournamentView(View):
 
 class GenerateStageGames(View):
     def get(self, request, *args, **kwargs):
-        tournament: Tournament = Tournament.objects.get_object_or_404(pk=kwargs.get("pk"))
+        tournament: Tournament = Tournament.objects.get(pk=kwargs.get("pk"))
 
-        teams = Team.objects.filter(Tournament=tournament.id)
-        num_games = kwargs.get("stage")
-        teams = [team for team in teams]
-        while num_games > 0:
-            team_a = random.choice(teams)
-            teams = teams.remove(team_a)
-            team_b = random.choice(teams)
-            teams = teams.remove(team_b)
-            Game.objects.create(
-                team_a=team_a,
-                team_b=team_b,
-            )
+        stage = tournament.get_stage()
+        games = tournament.game_set.filter(stage=stage*2)
+        if games.count() == 0 or games.filter(
+                played=True).aggregate(Count("played"))["played__count"] == stage*2:
+            games = tournament.generate_stage()
 
-        return redirect(reverse())
+        return render(request, "Team/Stage.html", context={
+            "games": games, "pk":tournament.id,
+        })
+
+
+class GameChange(generic.UpdateView):
+    template_name = "Team/GameChange.html"
+    form_class = GameEditForm
+    model = Game
 
 
 class ListStageGames(View):
