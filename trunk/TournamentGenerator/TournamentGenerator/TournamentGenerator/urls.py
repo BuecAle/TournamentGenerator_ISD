@@ -23,7 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="GettingStarted.html"), name='GettingStarted'),
     path('Tournament/', include('Tournament.urls')),
-    path('Team/', include('Team.urls'))
+    path('Team/', include('Team.urls')),
+    path('About/', TemplateView.as_view(template_name="About.html"), name='About'),
+    path('Imprint/', TemplateView.as_view(template_name="Imprint.html"), name='Imprint')
     # path('home/', tournamentCreateView),
     # path('teams/', teamList),
     # path('', tournamentCreateView),
