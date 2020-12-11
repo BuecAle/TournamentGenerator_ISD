@@ -54,7 +54,7 @@ class Tournament(models.Model):
                     teams.append(game.team_a.id)
                 else:
                     teams.append(game.team_b.id)
-                teams = self.team_set.filter(id__in=teams)
+            teams = self.team_set.filter(id__in=teams)
             self.create_stage(stage, teams)
 
         return self.game_set.filter(stage=stage)
