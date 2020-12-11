@@ -3,7 +3,7 @@
 {% block mainContent %}
     <h1>Create a new Team</h1>
     <br>
-    <form action="{% url 'Team:Stage' %}" method="PUT">{% csrf_token %}
+    <form action="{% url 'Team:Game' pk%}" method="POST">{% csrf_token %}
         {{game.team_a}} points: {{form.team_a_points}}<br>
         {{game.team_b}} points: {{form.team_b_points}}<br>
         Game finished: {{form.played}}<br><br>

@@ -8,7 +8,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{game.team_a}}:{{game.team_a_points}} VS {{game.team_b}}:{{game.team_b_points}} </h5>
-        <a href="#" class="btn btn-primary">EDIT</a>
+        <a href="{% url 'Team:Game' game.id %}" class="btn btn-primary">EDIT</a>
       </div>
     </div>
   </div>

@@ -90,10 +90,21 @@ class GenerateStageGames(View):
         })
 
 
-class GameChange(generic.UpdateView):
-    template_name = "Team/GameChange.html"
-    form_class = GameEditForm
-    model = Game
+class GameChange(View):
+    def get(self, request, *args, **kwargs):
+        game = Game.objects.get(id=kwargs.get("pk"))
+        form = GameEditForm
+
+        return render(request, "Team/GameChange.html", context={
+            "form": form, "pk":game.id, "game":game,
+        })
+
+    def post(self, request, *args, **kwargs):
+        game = Game.objects.get(id=kwargs.get("pk"))
+        form = GameEditForm(request.POST, instance=game)
+        if form.is_valid():
+            form.save()
+        return redirect(reverse("Team:Stage", kwargs={"pk": form.instance.tournament.id}))
 
 
 class ListStageGames(View):

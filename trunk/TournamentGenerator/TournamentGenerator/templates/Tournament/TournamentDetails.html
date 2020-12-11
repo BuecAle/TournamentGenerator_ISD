@@ -32,5 +32,6 @@
 
 {% block mainContent3 %}
     <a href="{% url 'Tournament:CreateTeamForTournament' pk %}" class="StandardBtn">Create a new Team for {{tournament.TournamentName}}</a>
+    <a href="{% url 'Team:Stage' pk %}">Generate Stage Games</a>
 {% endblock %}
 
