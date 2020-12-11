@@ -10,14 +10,7 @@
 {% if team_list %}
     <ul>
     {% for team in team_list %}
-    <div class="col mb-4">
-        <div class="card h-10">
-          <img src="{% static 'example.svg' %}" class="card-img-top" alt="My image" height="100px" >
-          <div class="card-body">
-            <h5 class="card-title"><a href="{% url 'Team:Details' team.id %}"> {{ team.TeamName }}</a></h5>
-          </div>
-        </div>
-    </div>
+    <li><a href="{% url 'Team:Details' team.id %}">{{ team.TeamName }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

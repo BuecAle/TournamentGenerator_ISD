@@ -16,10 +16,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name="GettingStarted.html"), name='GettingStarted'),
     path('Tournament/', include('Tournament.urls')),
     path('Team/', include('Team.urls'))
     # path('home/', tournamentCreateView),
