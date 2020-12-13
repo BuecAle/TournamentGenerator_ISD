@@ -46,7 +46,7 @@ class TeamCreateForTournamentView(View):
     def get(self, request, *args, **kwargs):
         tournament = Tournament.objects.get(pk=kwargs["pk"])
         form = TeamCreateForm(initial={'Tournament': tournament})
-        remainingTeams = int(tournament.TournamentSize[0]) - Team.objects.filter(Tournament=tournament).count()
+        remainingTeams = int(tournament.TournamentSize.split()[0]) - Team.objects.filter(Tournament=tournament).count()
         if remainingTeams == 0:
             tournament_complete = True
         else:
@@ -64,7 +64,7 @@ class TeamCreateForTournamentView(View):
             form.save(commit=False)
             tournament = Tournament.objects.get(pk=kwargs["pk"])
             form.instance.tournament = tournament
-            teams_remain = int(tournament.TournamentSize[0])- Team.objects.filter(Tournament=tournament).count()
+            teams_remain = int(tournament.TournamentSize.split()[0])- Team.objects.filter(Tournament=tournament).count()
             if teams_remain > 0:
                 form.save()
                 return redirect(reverse("Tournament:Details", kwargs={"pk": kwargs["pk"]}))
@@ -72,7 +72,7 @@ class TeamCreateForTournamentView(View):
                 form.clean()
                 return redirect(reverse("Tournament:CreateTeamForTournament", kwargs={"pk": kwargs["pk"]}))
         else:
-            return redirect(reverse("Tournament:Details", kwargs={"pk": kwargs["pk"]}))
+            return redirect(reverse("Tournament:Details", kwargs={"pk": kwargs["pk"],"errors": form.errors}))
 
 
 class GenerateStageGames(View):
