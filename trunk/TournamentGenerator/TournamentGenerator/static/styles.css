@@ -165,10 +165,9 @@ border: none;
 
 /* Footer */
 div.footer {
-  margin: 0;
-  position: fixed;
-  bottom: 0;
-  height: 80px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
   width: 100%;
   background-color: #333;
   color: white;
