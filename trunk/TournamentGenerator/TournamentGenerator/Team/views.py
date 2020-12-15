@@ -62,7 +62,7 @@ class TeamCreateForTournamentView(View):
             form.save(commit=False)
             tournament = Tournament.objects.get(pk=kwargs["pk"])
             form.instance.tournament = tournament
-            teams_remain = int(tournament.TournamentSize[0])- Team.objects.filter(Tournament=tournament).count()
+            teams_remain = int(tournament.TournamentSize[0]) - Team.objects.filter(Tournament=tournament).count()
             if teams_remain > 0:
                 form.save()
                 return redirect(reverse("Tournament:Details", kwargs={"pk": kwargs["pk"]}))
