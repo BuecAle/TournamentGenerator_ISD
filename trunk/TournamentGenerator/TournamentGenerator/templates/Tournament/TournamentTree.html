@@ -1,0 +1,127 @@
+{% extends 'Base/base_3_content.html' %}
+{% load static %}
+
+
+{% block mainContent %}
+    <h1>{{tournament.TournamentName}}</h1>
+    <h4>Tournament Size: {{tournament.TournamentSize}}</h4>
+    <h5>{% if tournament_complete %}
+        All teams created.
+    {% else %}
+        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
+    {% endif %}</h5>
+{% endblock %}
+
+{% block mainContent2 %}
+{% if tournamentsize == 32 %}
+<table border="1px" width="100%" height="100px" bgcolor="pink">
+    <tbody>
+        <tr>
+            {% if tournamentsize == 32 and tournament_complete %}
+                {% for obj1 in firstteams %}
+                {% for obj2 in secondteams %}
+                  {% if forloop.counter == forloop.parentloop.counter %}
+                    <td width="6,25%" align="center">
+                    <a class="StandardBtn" href="">{{ obj1.TeamName }}</a><br>
+                    vs. <br>
+                    <a class="StandardBtn" href="">{{ obj2.TeamName }}</a><br>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+                {% endfor %}
+            {% elif tournamentsize == 32 %}
+                {% for i in "x"|ljust:"16" %}
+                    <td width="6,25%" align="center">Sechzentelfinale</td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    </tbody>
+</table>
+{% else %}
+{% endif %}
+
+{% if tournamentsize >= 16 %}
+<table border="1px" width="100%" height="100px" bgcolor="brown">
+    <tbody>
+        <tr>
+            {% if tournamentsize >= 16 and tournament_complete %}
+                {% for obj1 in firstteams %}
+                {% for obj2 in secondteams %}
+                  {% if forloop.counter == forloop.parentloop.counter %}
+                    <td width="12,5%" align="center">
+                    <a class="StandardBtn" href="">{{ obj1.TeamName }}</a><br>
+                    vs. <br>
+                    <a class="StandardBtn" href="">{{ obj2.TeamName }}</a><br>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+                {% endfor %}
+            {% elif tournamentsize >= 16 %}
+                {% for i in "x"|ljust:"8" %}
+                    <td width="12,5%" align="center">Achtelfinale</td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    </tbody>
+</table>
+{% else %}
+{% endif %}
+
+
+<table border="1px" width="100%" height="100px" bgcolor="yellow">
+    <tbody>
+        <tr>
+            {% if tournamentsize == 8 and tournament_complete %}
+                {% for obj1 in firstteams %}
+                {% for obj2 in secondteams %}
+                  {% if forloop.counter == forloop.parentloop.counter %}
+                    <td width="25%" align="center">
+                    <a class="StandardBtn" href="">{{ obj1.TeamName }}</a><br>
+                    vs. <br>
+                    <a class="StandardBtn" href="">{{ obj2.TeamName }}</a><br>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+                {% endfor %}
+            {% else %}
+                {% for i in "x"|ljust:"4" %}
+                    <td width="25%" align="center">Viertelfinale</td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    </tbody>
+</table>
+
+
+<table border="1px" width="100%" height="100px" bgcolor="green">
+    <tbody>
+        <tr>
+        <td width="50%" align="center">Halbfinale</td>
+        <td width="50%" align="center">Halbfinale</td>
+    </tr>
+    </tbody>
+</table>
+<table border="1px" width="100%" height="100px" bgcolor="blue">
+    <tbody>
+        <tr>
+        <td width="100%" align="center">Finale</td>
+    </tr>
+    </tbody>
+</table>
+<table border="1px" width="100%" height="100px" bgcolor="red">
+    <tbody>
+        <tr>
+        <td width="50%" align="center">Champion</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
+
+{% block mainContent3 %}
+    <a href="{% url 'Tournament:Details' pk %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
+{% endblock %}
+

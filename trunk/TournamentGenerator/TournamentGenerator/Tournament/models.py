@@ -17,3 +17,12 @@ class Tournament(models.Model):
 
     def __str__(self):
         return self.TournamentName
+
+    def get_TournamentSize(self):
+        if self.TournamentSize == "8 Teams":
+            tournamentsize = 8
+        elif self.TournamentSize == "16 Teams":
+            tournamentsize = 16
+        elif self.TournamentSize == "32 Teams":
+            tournamentsize = 32
+        return tournamentsize

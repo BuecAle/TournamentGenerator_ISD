@@ -18,8 +18,9 @@ class TournamentAllView(generic.ListView):
 class TournamentDetailsView(View):
    def get(self, request, *args, **kwargs):
        tournament = Tournament.objects.get(pk=kwargs["pk"])
-       team = Team.objects.filter(Tournament=kwargs["pk"])
-       remainingTeams = int(tournament.TournamentSize[0]) - Team.objects.filter(Tournament=tournament).count()
+       tournamentsize = Tournament.get_TournamentSize(tournament)
+       team = Team.objects.filter(Tournament=tournament)
+       remainingTeams = tournamentsize - Team.objects.filter(Tournament=tournament).count()
        if remainingTeams == 0:
            tournament_complete = True
        else:
@@ -47,4 +48,25 @@ class TournamentCreateView(View):
         return redirect(reverse("Tournament:Overview"))
 
 
-
+class TournamentTreeView(View):
+   def get(self, request, *args, **kwargs):
+       tournament = Tournament.objects.get(pk=kwargs["pk"])
+       tournamentsize = Tournament.get_TournamentSize(tournament)
+       team = Team.objects.filter(Tournament=tournament)
+       firstteams = team[:(tournamentsize/2)]
+       secondteams = team[(tournamentsize/2):]
+       remainingTeams = tournamentsize - team.count()
+       if remainingTeams == 0:
+           tournament_complete = True
+       else:
+           tournament_complete = False
+       return render(request, "Tournament/TournamentTree.html", context={
+           "pk": kwargs["pk"],
+           "tournament": tournament,
+           "tournamentsize": tournamentsize,
+           "team": team,
+           "firstteams": firstteams,
+           "secondteams": secondteams,
+           "remainingTeams": remainingTeams,
+           "tournament_complete": tournament_complete,
+       })
