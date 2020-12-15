@@ -75,15 +75,11 @@ class TeamCreateForTournamentView(View):
             return redirect(reverse("Tournament:Details", kwargs={"pk": kwargs["pk"],"errors": form.errors}))
 
 
-class GenerateStageGames(View):
+class ListStageGamesView(View):
     def get(self, request, *args, **kwargs):
         tournament: Tournament = Tournament.objects.get(pk=kwargs.get("pk"))
-
-        stage = tournament.get_stage()
-        games = tournament.game_set.filter(stage=stage*2)
-        if games.count() == 0 or games.filter(
-                played=True).aggregate(Count("played"))["played__count"] == stage*2:
-            games = tournament.generate_stage()
+        stage = kwargs.get("stage")
+        games = Game.objects.filter(tournament=tournament, stage=stage)
 
         return render(request, "Team/Stage.html", context={
             "games": games, "pk":tournament.id,
@@ -104,7 +100,7 @@ class GameChange(View):
         form = GameEditForm(request.POST, instance=game)
         if form.is_valid():
             form.save()
-        return redirect(reverse("Team:Stage", kwargs={"pk": form.instance.tournament.id}))
+        return redirect(reverse("Team:Stage", kwargs={"pk": form.instance.tournament.id, "stage":game.stage}))
 
 
 class ListStageGames(View):

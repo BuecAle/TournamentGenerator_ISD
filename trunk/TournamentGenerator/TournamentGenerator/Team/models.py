@@ -19,9 +19,6 @@ class Team(models.Model):
         return self.TeamName
 
 
-
-
-
 class Game(models.Model):
     STAGE_CHOICES = (
         (16, "1 of 32"),

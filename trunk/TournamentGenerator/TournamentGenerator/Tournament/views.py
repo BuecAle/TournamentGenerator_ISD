@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View, generic
+from django.db.models import Min
 
 from .forms import TournamentCreateForm
 from .models import Tournament
-from Team.models import Team
+from Team.models import Team, Game
 
 
 # Create your views here.
@@ -20,6 +21,10 @@ class TournamentDetailsView(View):
        tournament = Tournament.objects.get(pk=kwargs["pk"])
        team = Team.objects.filter(Tournament=kwargs["pk"])
        remainingTeams = int(tournament.TournamentSize.split()[0]) - Team.objects.filter(Tournament=tournament).count()
+       stage = tournament.get_stage()
+       if tournament.game_set.all().aggregate(Min("stage"))["stage__min"] != stage:
+           tournament.generate_stage()
+       stages = tournament.game_set.all().order_by("-stage").values_list("stage", flat=True).distinct()
        if remainingTeams == 0:
            tournament_complete = True
        else:
@@ -30,6 +35,7 @@ class TournamentDetailsView(View):
            "team": team,
            "remainingTeams": remainingTeams,
            "tournament_complete": tournament_complete,
+           "stages": stages,
        })
 
 

@@ -20,10 +20,14 @@ class Tournament(models.Model):
         return self.TournamentName
 
     def get_stage(self):
+        min_stage = self.game_set.all().aggregate(models.Min("stage"))["stage__min"]
+        num_of_games = self.game_set.filter(stage=min_stage).count()
         if self.game_set.all().count() == 0:
             return int(self.TournamentSize.split()[0])//2
+        elif self.game_set.filter(played=True, stage=min_stage).count() == num_of_games:
+            return min_stage // 2
         else:
-            return self.game_set.all().aggregate(models.Min("stage"))["stage__min"]//2
+            return min_stage
 
     def create_stage(self, stage, teams):
         i = stage
