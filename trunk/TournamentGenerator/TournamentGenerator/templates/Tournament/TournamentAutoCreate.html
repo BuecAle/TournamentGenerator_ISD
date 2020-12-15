@@ -1,17 +1,9 @@
 {% extends 'Base/base_2_content.html' %}
 
-<!-- Header -->
 {% block mainContent %}
     <h1>Create a new Team for {{tournament.TournamentName}}</h1>
-    <!-- Show how many Teams have to be created for Tournament -->
-    <h5>{% if tournament_complete %}
-    {% else %}
-        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
-    {% endif %}</h5>
 {% endblock %}
 
-
-<!-- Create a new Team for a specific Tournament -->
 {% block mainContent2 %}
     {% if tournament_complete %}
     <h4>All teams created.</h4><br>

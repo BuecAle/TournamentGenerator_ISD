@@ -32,6 +32,7 @@
 
 {% block mainContent3 %}
     <a href="{% url 'Tournament:CreateTeamForTournament' pk %}" class="StandardBtn">Create a new Team for {{tournament.TournamentName}}</a>
+    <a href="{% url 'Tournament:AutoCreate' pk %}" class="StandardBtn AutoCreate">Auto Create</a>
     <a href="{% url 'Tournament:Tree' pk %}" class="StandardBtn">Show Tournament Tree</a>
 {% endblock %}
 
