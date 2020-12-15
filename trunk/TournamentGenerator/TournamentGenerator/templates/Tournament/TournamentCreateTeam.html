@@ -46,7 +46,7 @@
             <input type="submit" name="Save" value="Submit">
         </form>
         <br>
-
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
     {% endif %}
     <br>
 {% endblock %}
