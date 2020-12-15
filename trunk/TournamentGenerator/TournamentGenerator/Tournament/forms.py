@@ -16,6 +16,7 @@ class TournamentCreateForm(forms.ModelForm):
         return tmp
 
 
+
 class RawTournamentForm(forms.Form):
     TournamentName = forms.CharField()
     TournamentSize = forms.CharField()

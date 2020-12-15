@@ -13,6 +13,8 @@
 {% endblock %}
 
 {% block mainContent2 %}
+
+<!-- Round of 32 -->
 {% if tournamentsize == 32 %}
 <table border="1px" width="100%" height="100px" bgcolor="pink">
     <tbody>
@@ -22,9 +24,9 @@
                 {% for obj2 in secondteams %}
                   {% if forloop.counter == forloop.parentloop.counter %}
                     <td width="6,25%" align="center">
-                    <a class="StandardBtn" href="">{{ obj1.TeamName }}</a><br>
+                    <label>{{ obj1.TeamName }}</label><br>
                     vs. <br>
-                    <a class="StandardBtn" href="">{{ obj2.TeamName }}</a><br>
+                    <label>{{ obj2.TeamName }}</label><br>
                     </td>
                   {% endif %}
                 {% endfor %}
@@ -40,25 +42,46 @@
 {% else %}
 {% endif %}
 
+<!-- Round of 16 -->
 {% if tournamentsize >= 16 %}
 <table border="1px" width="100%" height="100px" bgcolor="brown">
     <tbody>
         <tr>
-            {% if tournamentsize >= 16 and tournament_complete %}
-                {% for obj1 in firstteams %}
-                {% for obj2 in secondteams %}
-                  {% if forloop.counter == forloop.parentloop.counter %}
-                    <td width="12,5%" align="center">
-                    <a class="StandardBtn" href="">{{ obj1.TeamName }}</a><br>
-                    vs. <br>
-                    <a class="StandardBtn" href="">{{ obj2.TeamName }}</a><br>
-                    </td>
-                  {% endif %}
-                {% endfor %}
-                {% endfor %}
-            {% elif tournamentsize >= 16 %}
+            {% if tournamentsize == 16 %}
+                {% if tournament_complete %}
+                    {% for obj1 in firstteams %}
+                    {% for obj2 in secondteams %}
+                      {% if forloop.counter == forloop.parentloop.counter %}
+                        <td width="12,5%" align="center">
+                        <label>{{ obj1.TeamName }}</label><br>
+                        vs. <br>
+                        <label>{{ obj2.TeamName }}</label><br>
+                        </td>
+                      {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                {% else %}
+                       {% for i in "x"|ljust:"8" %}
+                        <td width="12,5%" align="center">
+                            <label>Round of 16</label><br>
+                        </td>
+                   {% endfor %}
+                {% endif %}
+            {% elif tournamentsize > 16 %}
                 {% for i in "x"|ljust:"8" %}
-                    <td width="12,5%" align="center">Achtelfinale</td>
+                <td width="12,5%" align="center">
+                <select>
+                        {% for obj in team %}
+                        <option>{{obj.TeamName}}</option>
+                        {% endfor %}
+                        </select><br>
+                        vs.<br>
+                        <select>
+                        {% for obj in team %}
+                        <option>{{obj.TeamName}}</option>
+                        {% endfor %}
+                </select>
+                </td>
                 {% endfor %}
             {% endif %}
         </tr>
@@ -67,7 +90,7 @@
 {% else %}
 {% endif %}
 
-
+<!-- Quaterfinal -->
 <table border="1px" width="100%" height="100px" bgcolor="yellow">
     <tbody>
         <tr>
@@ -76,47 +99,92 @@
                 {% for obj2 in secondteams %}
                   {% if forloop.counter == forloop.parentloop.counter %}
                     <td width="25%" align="center">
-                    <a class="StandardBtn" href="">{{ obj1.TeamName }}</a><br>
+                    <label>{{ obj1.TeamName }}</a><br>
                     vs. <br>
-                    <a class="StandardBtn" href="">{{ obj2.TeamName }}</a><br>
+                    <label>{{ obj2.TeamName }}</a><br>
                     </td>
                   {% endif %}
                 {% endfor %}
                 {% endfor %}
             {% else %}
                 {% for i in "x"|ljust:"4" %}
-                    <td width="25%" align="center">Viertelfinale</td>
+                <td width="25%" align="center">
+                    <select>
+                    {% for obj in team %}
+                        <option>{{obj.TeamName}}</option>
+                        {% endfor %}
+                        </select><br>
+                        vs.<br>
+                        <select>
+                        {% for obj in team %}
+                        <option>{{obj.TeamName}}</option>
+                    {% endfor %}
+                    </select>
+                </td>
                 {% endfor %}
             {% endif %}
         </tr>
     </tbody>
 </table>
 
-
+<!-- Semifinal -->
 <table border="1px" width="100%" height="100px" bgcolor="green">
     <tbody>
         <tr>
-        <td width="50%" align="center">Halbfinale</td>
-        <td width="50%" align="center">Halbfinale</td>
+        {% for i in "x"|ljust:"2" %}
+        <td width="50%" align="center">
+            <select>
+                {% for obj in team %}
+                    <option>{{obj.TeamName}}</option>
+                {% endfor %}
+            </select><br>
+            vs.<br>
+            <select>
+                {% for obj in team %}
+                    <option>{{obj.TeamName}}</option>
+                {% endfor %}
+            </select>
+        </td>
+    {% endfor %}
     </tr>
     </tbody>
 </table>
+
+<!-- Final -->
 <table border="1px" width="100%" height="100px" bgcolor="blue">
     <tbody>
         <tr>
-        <td width="100%" align="center">Finale</td>
+            <td width="50%" align="center">
+            <select>
+            {% for obj in team %}
+                <option>{{obj.TeamName}}</option>
+                {% endfor %}
+                </select><br>
+                vs.<br>
+                <select>
+                {% for obj in team %}
+                <option>{{obj.TeamName}}</option>
+            {% endfor %}
+            </select>
+        </td>
     </tr>
     </tbody>
 </table>
+
+<!-- Champion -->
 <table border="1px" width="100%" height="100px" bgcolor="red">
     <tbody>
         <tr>
-        <td width="50%" align="center">Champion</td>
+        <td width="50%" align="center">
+            <select>
+                {% for obj in team %}
+                    <option>{{obj.TeamName}}</option>
+                {% endfor %}
+            </select><br>
+        </td>
     </tr>
     </tbody>
 </table>
-
-
 
 
 {% endblock %}
