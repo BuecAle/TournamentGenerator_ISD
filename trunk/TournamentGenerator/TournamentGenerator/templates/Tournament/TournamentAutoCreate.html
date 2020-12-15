@@ -2,14 +2,18 @@
 
 {% block mainContent %}
     <h1>Create a new Team for {{tournament.TournamentName}}</h1>
+    <h5>{% if tournament_complete %}
+    {% else %}
+        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
+    {% endif %}</h5>
 {% endblock %}
 
 {% block mainContent2 %}
     {% if tournament_complete %}
     <h4>All teams created.</h4><br>
-        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Show Tournament Tree</a>
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
     {% else %}
-        <form action="{% url 'Tournament:CreateTeamForTournament' tournament.id %}" method="POST">{% csrf_token %}
+        <form action="{% url 'Tournament:AutoCreate' tournament.id %}" method="POST">{% csrf_token %}
             <table>
             <tbody>
             <tr>
@@ -34,9 +38,9 @@
             </tr>
             </tbody>
             </table>
-
             <input type="submit" name="Save" value="Submit">
-        </form>
+        </form><br>
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
     {% endif %}
     <br>
 {% endblock %}

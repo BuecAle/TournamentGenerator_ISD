@@ -15,7 +15,7 @@
 {% block mainContent2 %}
     {% if tournament_complete %}
     <h4>All teams created.</h4><br>
-        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Show Tournament Tree</a>
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
     {% else %}
         <form action="{% url 'Tournament:CreateTeamForTournament' tournament.id %}" method="POST">{% csrf_token %}
             <table>
@@ -45,6 +45,8 @@
 
             <input type="submit" name="Save" value="Submit">
         </form>
+        <br>
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
     {% endif %}
     <br>
 {% endblock %}
