@@ -24,6 +24,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="GettingStarted.html"), name='GettingStarted'),
     path('Tournament/', include('Tournament.urls')),
     path('Team/', include('Team.urls')),
+    path('Samples/', TemplateView.as_view(template_name="Samples.html"), name='Samples'),
     path('About/', TemplateView.as_view(template_name="About.html"), name='About'),
     path('Imprint/', TemplateView.as_view(template_name="Imprint.html"), name='Imprint')
     # path('home/', tournamentCreateView),
