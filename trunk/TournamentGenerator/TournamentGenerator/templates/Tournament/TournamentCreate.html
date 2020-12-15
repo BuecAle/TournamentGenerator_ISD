@@ -4,8 +4,19 @@
     <h1>Create a new Tournament</h1>
     <br>
     <form action="{% url 'Tournament:Create' %}" method="POST">{% csrf_token %}
-        Name: {{form.TournamentName}}<br>
-        Number of Teams: {{form.TournamentSize}}<br>
+        <table>
+            <tbody>
+            <tr>
+                <td width="200px">Name:</td>
+                <td>{{form.TournamentName}}</td>
+            </tr>
+            <tr>
+                <td width="100px">Number of Teams:</td>
+                <td>{{form.TournamentSize}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
         <input type="submit" name="Save" value="Submit">
     </form>
     <br>
