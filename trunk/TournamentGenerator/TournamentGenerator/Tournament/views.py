@@ -95,3 +95,28 @@ class TournamentTreeView(View):
 
 
 
+
+# class TournamentGames(View):
+#     def get(self, request, *args, **kwargs):
+#         tournament = Tournament.objects.get(pk=kwargs["pk"])
+#         tournamentsize = Tournament.get_TournamentSize(tournament)
+#         team = Team.objects.filter(Tournament=tournament)
+#         firstteams = team[:(tournamentsize / 2)]
+#         secondteams = team[(tournamentsize / 2):]
+#         for i in firstteams:
+#         for p in secondteams:
+#             if i==p:
+#                 winner
+#         return render(request, "Tournament/TournamentRound.html", context={
+#             "pk": kwargs["pk"],
+#             "tournament": tournament,
+#             "tournamentsize": tournamentsize,
+#             "team": team,
+#             "firstteams": firstteams,
+#             "secondteams": secondteams,
+#             "remainingTeams": remainingTeams,
+#             "tournament_complete": tournament_complete,
+#         })
+
+
+
