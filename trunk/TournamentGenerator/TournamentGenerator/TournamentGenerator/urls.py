@@ -21,12 +21,19 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path for admin site
     path('', TemplateView.as_view(template_name="GettingStarted.html"), name='GettingStarted'),
+    #Starting Page of Tournament Generator --> Homepage/Landingpage
     path('Tournament/', include('Tournament.urls')),
+    #example: Tournament/16/; shows Tournamentdetails and information if all teams created
     path('Team/', include('Team.urls')),
+    #example: teams/67/; general information and games
     path('Samples/', TemplateView.as_view(template_name="Samples.html"), name='Samples'),
+    #path to Samples; blank tournamenttrees 8/16/32
     path('About/', TemplateView.as_view(template_name="About.html"), name='About'),
+    #path Aboutsite, extends simple html base
     path('Imprint/', TemplateView.as_view(template_name="Imprint.html"), name='Imprint')
+    #path to Imprint page, extends simple html base
     # path('home/', tournamentCreateView),
     # path('teams/', teamList),
     # path('', tournamentCreateView),
