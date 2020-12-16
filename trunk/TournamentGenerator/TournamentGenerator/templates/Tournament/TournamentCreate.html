@@ -2,7 +2,10 @@
 
 {% block mainContent %}
     <h1>Create a new Tournament</h1>
-    <br>
+{% endblock %}
+
+{% block mainContent2 %}
+<!-- Empty Form to create a new Tournament-->
     <form action="{% url 'Tournament:Create' %}" method="POST">{% csrf_token %}
         <table>
             <tbody>
@@ -20,7 +23,5 @@
         <input type="submit" name="Save" value="Submit">
     </form>
     <br>
-{% endblock %}
 
-{% block mainContent2 %}
 {% endblock %}

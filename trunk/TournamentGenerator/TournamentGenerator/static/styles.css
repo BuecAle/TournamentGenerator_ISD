@@ -79,9 +79,10 @@ input[type=text] {
     width: 300px;
     height: 47px;
 	box-shadow: 0px;
-	background-color:black;
+	background-color:white;
 	border-radius:8px;
-	border: 1px;
+	border-width: 1px;
+	border-color: black;
 	display:inline-block;
 	cursor:pointer;
 	font-family:Arial;
@@ -91,10 +92,11 @@ input[type=text] {
 	text-decoration:none;
 	text-shadow:0px;
 	text-align: center;
-	color: white;
+	color: black;
 }
 input[type=text]:hover {
-	background-color:white;
+	background-color:lightgrey;
+	border-width: 1px;
 }
 /*-------------------------------------------------*/
 
@@ -190,15 +192,16 @@ border: none;
 
 /* Footer */
 
-footer {
+.footer {
+  position: absolute;
   left: 0px;
   bottom: 0px;
   padding-left:20px;
   padding-top:20px;
   width: 100%;
   background-color: #333;
-  color: white;
   text-align: left;
+  color: white;
 }
 /* ------------------------------------------------- */
 
@@ -229,4 +232,5 @@ footer {
     position: relative;
 }
 /* ------------------------------------------------- */
+
 

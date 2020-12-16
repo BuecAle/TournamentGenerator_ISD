@@ -6,6 +6,7 @@
     <h1>All Teams</h1>
 {% endblock %}
 
+<!-- Shows a list with all created Teams in alphabetical order -->
 {% block mainContent2 %}
 {% if team_list %}
     <ul>
@@ -17,6 +18,7 @@
     <p>No Teams created yet.</p>
 {% endif %}
 {% endblock %}
+
 
 {% block mainContent3 %}
     <a href="{% url 'Team:Create' %}" class="StandardBtn">Create a new Team</a>

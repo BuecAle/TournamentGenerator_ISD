@@ -11,12 +11,13 @@ class TeamsInLine(admin.TabularInline):
 
 
 class TournamentAdmin(admin.ModelAdmin):
-    fieldsets = [
-
-    ]
+    fieldsets = []
     inlines = [TeamsInLine]
+    # Shows Tournamentname and -Size
     list_display = ('TournamentName', 'TournamentSize')
+    # Field where Tournaments can be searched with Tournamentname
     search_fields = ['TournamentName']
 
 
+# Show Model Tournament on admin page
 admin.site.register(Tournament, TournamentAdmin)

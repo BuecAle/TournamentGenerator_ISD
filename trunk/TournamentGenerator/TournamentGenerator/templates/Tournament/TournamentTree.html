@@ -5,15 +5,19 @@
 {% block mainContent %}
     <h1>{{tournament.TournamentName}}</h1>
     <h4>Tournament Size: {{tournament.TournamentSize}}</h4>
+<!-- IF all teams are created Text -->
     <h5>{% if tournament_complete %}
         All teams created.
+<!-- ELSE shows the number of Teams which have to be created for the Tournament -->
     {% else %}
-        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
+        {{remainingteams}} Teams to create for {{tournament.TournamentName}}.
     {% endif %}</h5>
 {% endblock %}
 
+<!-- Shows a Tournament Tree with all the Stages and Games -->
+<!--    - In the first Stage the Teams of the Tournament are already filled in -->
+<!--    - All the other Stages with its Games and Teams can be selected with a Dropdown Menu-->
 {% block mainContent2 %}
-
 <!-- Round of 32 -->
 {% if tournamentsize == 32 %}
 <table border="1px" width="100%" height="100px" bgcolor="pink">
@@ -47,43 +51,43 @@
 <table border="1px" width="100%" height="100px" bgcolor="#BE8802">
     <tbody>
         <tr>
-            {% if tournamentsize == 16 %}
-                {% if tournament_complete %}
-                    {% for obj1 in firstteams %}
-                    {% for obj2 in secondteams %}
-                      {% if forloop.counter == forloop.parentloop.counter %}
-                        <td width="12,5%" align="center">
+        {% if tournamentsize == 16 %}
+            {% if tournament_complete %}
+                {% for obj1 in firstteams %}
+                {% for obj2 in secondteams %}
+                  {% if forloop.counter == forloop.parentloop.counter %}
+                    <td width="12,5%" align="center">
                         <label>{{ obj1.TeamName }}</label><br>
                         vs. <br>
                         <label>{{ obj2.TeamName }}</label><br>
-                        </td>
-                      {% endif %}
-                    {% endfor %}
-                    {% endfor %}
-                {% else %}
-                       {% for i in "x"|ljust:"8" %}
-                        <td width="12,5%" align="center">
-                            <label>Round of 16</label><br>
-                        </td>
-                   {% endfor %}
-                {% endif %}
-            {% elif tournamentsize > 16 %}
-                {% for i in "x"|ljust:"8" %}
-                <td width="12,5%" align="center">
-                <select>
-                        {% for obj in team %}
-                        <option>{{obj.TeamName}}</option>
-                        {% endfor %}
-                        </select><br>
-                        vs.<br>
-                        <select>
-                        {% for obj in team %}
-                        <option>{{obj.TeamName}}</option>
-                        {% endfor %}
-                </select>
-                </td>
+                    </td>
+                  {% endif %}
                 {% endfor %}
+                {% endfor %}
+            {% else %}
+                   {% for i in "x"|ljust:"8" %}
+                    <td width="12,5%" align="center">
+                        <label>Round of 16</label><br>
+                    </td>
+               {% endfor %}
             {% endif %}
+        {% elif tournamentsize > 16 %}
+            {% for i in "x"|ljust:"8" %}
+            <td width="12,5%" align="center">
+                <select>
+                    {% for obj in team %}
+                        <option>{{obj.TeamName}}</option>
+                    {% endfor %}
+                </select><br>
+                    vs.<br>
+                <select>
+                    {% for obj in team %}
+                        <option>{{obj.TeamName}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            {% endfor %}
+        {% endif %}
         </tr>
     </tbody>
 </table>
@@ -99,9 +103,9 @@
                 {% for obj2 in secondteams %}
                   {% if forloop.counter == forloop.parentloop.counter %}
                     <td width="25%" align="center">
-                    <label>{{ obj1.TeamName }}</a><br>
-                    vs. <br>
-                    <label>{{ obj2.TeamName }}</a><br>
+                        <label>{{ obj1.TeamName }}</label><br>
+                        vs. <br>
+                        <label>{{ obj2.TeamName }}</label><br>
                     </td>
                   {% endif %}
                 {% endfor %}
@@ -110,15 +114,15 @@
                 {% for i in "x"|ljust:"4" %}
                 <td width="25%" align="center">
                     <select>
-                    {% for obj in team %}
-                        <option>{{obj.TeamName}}</option>
-                        {% endfor %}
-                        </select><br>
-                        vs.<br>
-                        <select>
                         {% for obj in team %}
-                        <option>{{obj.TeamName}}</option>
-                    {% endfor %}
+                            <option>{{obj.TeamName}}</option>
+                        {% endfor %}
+                    </select><br>
+                    vs.<br>
+                    <select>
+                        {% for obj in team %}
+                            <option>{{obj.TeamName}}</option>
+                        {% endfor %}
                     </select>
                 </td>
                 {% endfor %}
@@ -185,8 +189,6 @@
     </tr>
     </tbody>
 </table>
-
-
 {% endblock %}
 
 {% block mainContent3 %}

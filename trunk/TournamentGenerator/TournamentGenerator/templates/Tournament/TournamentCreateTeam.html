@@ -3,19 +3,21 @@
 <!-- Header -->
 {% block mainContent %}
     <h1>Create a new Team for {{tournament.TournamentName}}</h1>
-    <!-- Show how many Teams have to be created for Tournament -->
+<!-- IF all teams are created Text -->
     <h5>{% if tournament_complete %}
+<!-- ELSE shows the number of Teams which have to be created for the Tournament -->
     {% else %}
-        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
+        {{remainingteams}} Teams to create for {{tournament.TournamentName}}.
     {% endif %}</h5>
 {% endblock %}
 
 
-<!-- Create a new Team for a specific Tournament -->
 {% block mainContent2 %}
+<!-- IF All Teams are created: Text is displayed-->
     {% if tournament_complete %}
     <h4>All teams created.</h4><br>
         <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
+<!-- ELSE shows a empty Form to create a new Team for the specific Tournament -->
     {% else %}
         <form action="{% url 'Tournament:CreateTeamForTournament' tournament.id %}" method="POST">{% csrf_token %}
             <table>
@@ -42,7 +44,6 @@
             </tr>
             </tbody>
             </table>
-
             <input type="submit" name="Save" value="Submit">
         </form>
         <br>

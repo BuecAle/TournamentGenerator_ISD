@@ -16,11 +16,10 @@ class TeamCreateForm(forms.ModelForm):
         return tmp
 
 
+# Teamform with its fields
 class RawTeamForm(forms.Form):
     TeamName = forms.CharField()
     NrOfPlayer = forms.DecimalField(min_value=5, max_value=30)
     Manager = forms.CharField()
     Captain = forms.CharField()
     Tournament = forms.CharField()
-
-

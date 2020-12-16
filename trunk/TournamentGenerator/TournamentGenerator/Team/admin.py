@@ -12,9 +12,13 @@ class TeamAdmin(admin.ModelAdmin):
         (None, {'fields': ['Captain']}),
         ('Tournament', {'fields': ['Tournament']}),
     ]
+    # Shows Tournamentname and -Size
     list_display = ('TeamName', 'Tournament')
+    # Filter where Teams can be filtered by Tournament
     list_filter = ['Tournament']
+    # Field where Teams can be searched with Teamname
     search_fields = ['TeamName']
 
 
+# Show Model Tournament on admin page
 admin.site.register(Team, TeamAdmin)

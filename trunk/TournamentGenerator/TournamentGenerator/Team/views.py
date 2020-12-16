@@ -22,7 +22,7 @@ class TeamAllView(generic.ListView):
 #   - Shows the Teamname, Number of Player, Manager, Captain and the Tournament
 #   - Shows all the games of the Team
 class TeamDetailsView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, **kwargs):
         team = Team.objects.get(pk=kwargs["pk"])
         opponents = Team.objects.filter(Tournament=team.Tournament).exclude(TeamName=team.TeamName)
         return render(request, "Team/TeamDetails.html", context={
@@ -53,24 +53,24 @@ class TeamCreateView(View):
 # Empty File to create a new Team for the specific Tournament
 #   - Tournament is already filled in
 class TeamCreateForTournamentView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, **kwargs):
         tournament = Tournament.objects.get(pk=kwargs["pk"])
         tournamentsize = Tournament.get_TournamentSize(tournament)
         form = TeamCreateForm(initial={'Tournament': tournament})
-        remainingTeams = tournamentsize - Team.objects.filter(Tournament=tournament).count()
+        remainingteams = tournamentsize - Team.objects.filter(Tournament=tournament).count()
         # To show the number of Teams which have to be created for the Tournament
-        if remainingTeams == 0:
+        if remainingteams == 0:
             tournament_complete = True
         else:
             tournament_complete = False
         return render(request, "Tournament/TournamentCreateTeam.html", context={
             "form": form,
             "tournament": tournament,
-            "remainingTeams": remainingTeams,
+            "remainingteams": remainingteams,
             "tournament_complete": tournament_complete
         })
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, **kwargs):
         form = TeamCreateForm(request.POST)
         if form.is_valid():
             form.save(commit=False)
@@ -92,7 +92,7 @@ class TeamCreateForTournamentView(View):
 # Create new Team for specific Tournament
 #   - All fields are already field with random Strings
 class TeamAutoCreateView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, **kwargs):
         tournament = Tournament.objects.get(pk=kwargs["pk"])
         tournamentsize = Tournament.get_TournamentSize(tournament)
         teamname = get_random_string(length=10, allowed_chars='Team')
@@ -103,20 +103,20 @@ class TeamAutoCreateView(View):
                                        'Captain': captain,
                                        'Tournament': tournament,
                                        })
-        remainingTeams = tournamentsize - Team.objects.filter(Tournament=tournament).count()
+        remainingteams = tournamentsize - Team.objects.filter(Tournament=tournament).count()
         # To show the number of Teams which have to be created for the Tournament
-        if remainingTeams == 0:
+        if remainingteams == 0:
             tournament_complete = True
         else:
             tournament_complete = False
         return render(request, "Tournament/TournamentAutoCreate.html", context={
             "form": form,
             "tournament": tournament,
-            "remainingTeams": remainingTeams,
+            "remainingteams": remainingteams,
             "tournament_complete": tournament_complete
         })
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, **kwargs):
         form = TeamCreateForm(request.POST)
         if form.is_valid():
             form.save(commit=False)
