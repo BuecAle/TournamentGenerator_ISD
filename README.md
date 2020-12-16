@@ -5,12 +5,6 @@
  
  This tournament generator produces play offs for competetions with 8, 16 and, 32 teams, respectivly. 
  
- ## Contributers
- 
- * Alexander Büechel - alexander.buechel@uni.li
- * Fabio Hilti - fabio.hilti@uni.li
- * Lucy Gannon - lucy.gannon@uni.li 
- 
  ## Usage 
 The deisgn of the Tournament Generator is very intuitive, meaning new users should be able to master the process quickly. 
 
@@ -18,10 +12,13 @@ The deisgn of the Tournament Generator is very intuitive, meaning new users shou
 2. Users are redirected to a page where they can create their new tournament. They can decided between a game with 8, 16, or 32 teams. The tournament is then created. 
 3. Users then enter information about each team and the scores as the tournament progresses.
 
+ ## Contributers
+ 
+ * Alexander Büechel - alexander.buechel@uni.li
+ * Fabio Hilti - fabio.hilti@uni.li
+ * Lucy Gannon - lucy.gannon@uni.li 
+ 
 ## Technology 
-
-
-
  ______
  ### Licence & Copyright 
  
