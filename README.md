@@ -7,9 +7,9 @@
  
  ## Contributers
  
- * Alexander Büechel
- * Fabio Hilti 
- * Lucy Gannon 
+ * Alexander Büechel - alexander.buechel@uni.li
+ * Fabio Hilti - fabio.hilti@uni.li
+ * Lucy Gannon - lucy.gannon@uni.li 
  
  ## Usage 
 The deisgn of the Tournament Generator is very intuitive, meaning new users should be able to master the process quickly. 
