@@ -21,10 +21,12 @@ class TournamentDetailsView(View):
        tournament = Tournament.objects.get(pk=kwargs["pk"])
        team = Team.objects.filter(Tournament=kwargs["pk"])
        remainingTeams = int(tournament.TournamentSize.split()[0]) - Team.objects.filter(Tournament=tournament).count()
-       stage = tournament.get_stage()
-       if tournament.game_set.all().aggregate(Min("stage"))["stage__min"] != stage:
-           tournament.generate_stage()
-       stages = tournament.game_set.all().order_by("-stage").values_list("stage", flat=True).distinct()
+       stages = []
+       if remainingTeams == 0:
+           stage = tournament.get_stage()
+           if tournament.game_set.all().aggregate(Min("stage"))["stage__min"] != stage:
+               tournament.generate_stage()
+           stages = tournament.game_set.all().order_by("-stage").values_list("stage", flat=True).distinct()
        if remainingTeams == 0:
            tournament_complete = True
        else:
