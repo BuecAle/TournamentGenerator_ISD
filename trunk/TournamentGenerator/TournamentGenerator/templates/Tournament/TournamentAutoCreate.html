@@ -1,0 +1,46 @@
+{% extends 'Base/base_2_content.html' %}
+
+{% block mainContent %}
+    <h1>Create a new Team for {{tournament.TournamentName}}</h1>
+    <h5>{% if tournament_complete %}
+    {% else %}
+        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
+    {% endif %}</h5>
+{% endblock %}
+
+{% block mainContent2 %}
+    {% if tournament_complete %}
+    <h4>All teams created.</h4><br>
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
+    {% else %}
+        <form action="{% url 'Tournament:AutoCreate' tournament.id %}" method="POST">{% csrf_token %}
+            <table>
+            <tbody>
+            <tr>
+                <td width="200px">Name:</td>
+                <td>{{form.TeamName}}</td>
+            </tr>
+            <tr>
+                <td width="200px">Number of Player</td>
+                <td>{{form.NrOfPlayer}}</td>
+            </tr>
+            <tr>
+                <td width="200px">Captain:</td>
+                <td>{{form.Captain}}</td>
+            </tr>
+            <tr>
+                <td width="200px">Manager:</td>
+                <td>{{form.Manager}}</td>
+            </tr>
+            <tr>
+                <td width="200px">Tournament:</td>
+                <td>{{form.Tournament}}</td>
+            </tr>
+            </tbody>
+            </table>
+            <input type="submit" name="Save" value="Submit">
+        </form><br>
+        <a href="{% url 'Tournament:Details' tournament.id %}" class="StandardBtn">Back to {{tournament.TournamentName}}</a>
+    {% endif %}
+    <br>
+{% endblock %}
