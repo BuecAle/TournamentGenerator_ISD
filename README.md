@@ -12,11 +12,11 @@
  * Lucy Gannon 
  
  ## Usage 
-The tournament is deisgn of the Tournaments is very intuitive, meaning new users should be able to master the process simply. 
+The deisgn of the Tournament Generator is very intuitive, meaning new users should be able to master the process quickly. 
 
-1 New Users begin on the Homepage where there is a 'start' button to begin. 
-2 Users are redirected to a page where they can create their new tournament. They can decided between a game with 8, 16, or 32 teams. The tournament is then created. 
-3 Users then enter information about each team and the scores as the tournament progresses.
+1. New Users begin on the Homepage where there is a 'start' button to begin. 
+2. Users are redirected to a page where they can create their new tournament. They can decided between a game with 8, 16, or 32 teams. The tournament is then created. 
+3. Users then enter information about each team and the scores as the tournament progresses.
 
 
  ______
