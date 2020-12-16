@@ -4,6 +4,8 @@ from django.urls import reverse
 import random
 
 # Create your models here.
+
+# Tournament model with Tournamentname and Tournamentsize(3 choices)
 class Tournament(models.Model):
     TOURNAMENT_CHOICES = (
         ('8 Teams', '8 Teams'),
@@ -64,3 +66,13 @@ class Tournament(models.Model):
         return self.game_set.filter(stage=stage)
 
 
+
+    # Returns Tournamentsize as number depending on the chosen Tournamentsize
+    def get_TournamentSize(self):
+        if self.TournamentSize == "8 Teams":
+            tournamentsize = 8
+        elif self.TournamentSize == "16 Teams":
+            tournamentsize = 16
+        elif self.TournamentSize == "32 Teams":
+            tournamentsize = 32
+        return tournamentsize

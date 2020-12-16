@@ -30,3 +30,5 @@ class RawTeamForm(forms.Form):
     Manager = forms.CharField()
     Captain = forms.CharField()
     Tournament = forms.CharField()
+
+

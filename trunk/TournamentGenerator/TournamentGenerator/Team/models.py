@@ -8,6 +8,8 @@ def validate_name_length(value):
         raise ValidationError("Length should be more than 5 chars")
 
 # Create your models here.
+
+# Team model: Teamname, Number of Player, Manager, Captain and Tournament
 class Team(models.Model):
     TeamName = models.CharField(max_length=120, validators=[validate_name_length])
     NrOfPlayer = models.DecimalField(default=6, decimal_places=0, max_digits=2, validators=[MinValueValidator(5), MaxValueValidator(30)])

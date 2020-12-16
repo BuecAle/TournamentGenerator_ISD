@@ -8,7 +8,7 @@
     <h5>{% if tournament_complete %}
         All teams created.
     {% else %}
-        {{teams_remain}} Teams to create for {{tournament.TournamentName}}.
+        {{remainingTeams}} Teams to create for {{tournament.TournamentName}}.
     {% endif %}</h5>
 {% endblock %}
 
@@ -17,7 +17,7 @@
     {% for obj in team %}
     <div class="col mb-4">
         <div class="card h-10">
-          <img src="{% static 'example.svg' %}" class="card-img-top" alt="My image" height="100px" >
+          <img src="{% static 'images/group.svg' %}" class="card-img-top" alt="My image" height="100px" width="100px" >
           <div class="card-body">
             <h5 class="card-title"><a href=#> {{ obj.TeamName }}</a></h5>
             <p class="card-text"> Number of Players: {{ obj.NrOfPlayer }}<br>
