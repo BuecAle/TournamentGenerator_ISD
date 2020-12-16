@@ -3,7 +3,7 @@
  
  ***Version 1.0.0***
  
- This tournament generator produces play offs for competetions with 8, 16 and, 32 teams, repsectivly. 
+ This tournament generator produces play offs for competetions with 8, 16 and, 32 teams, respectivly. 
  
  ## Contributers
  
