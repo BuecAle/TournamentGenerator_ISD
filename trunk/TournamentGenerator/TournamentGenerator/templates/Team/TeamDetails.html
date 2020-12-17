@@ -9,16 +9,16 @@
 
 <!-- Shows all the Details of the specific Team -->
 {% block mainContent2 %}
-    Number of Player: {{ team.TeamName }}<br>
-    Manager: {{ team.TeamName }}<br>
-    Captain: {{ team.TeamName }}
+    Number of Player: {{ team.NrOfPlayer }}<br>
+    Manager: {{ team.Manager }}<br>
+    Captain: {{ team.Captain }}
 {% endblock %}
 
 <!-- Shows all the Games the specific Team has if Tournament is asigned -->
 {% block mainContent3 %}
-<h3>Games</h3>
+<h3>Possible Opponents</h3>
     {% for obj in opponents %}
-        {{ team.TeamName }} vs. {{ obj.TeamName }}<br>
+        {{ obj.TeamName }}<br>
     {% endfor %}
 
 {% endblock %}
